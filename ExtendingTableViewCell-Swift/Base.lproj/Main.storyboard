@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6185.7" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="wgS-KC-laf">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6181.2"/>
+    </dependencies>
+    <scenes>
+        <!--Extending Cell-->
+        <scene sceneID="Pux-Jo-tA5">
+            <objects>
+                <tableViewController storyboardIdentifier="RootViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OWm-ip-n8b" customClass="RootViewController" customModule="ExtendingTableViewCell_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="9rh-Sa-feG">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="NormalCell" textLabel="eKX-Kj-rWz" detailTextLabel="K0r-hB-c97" style="IBUITableViewCellStyleValue1" id="hjV-3Z-HqS">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hjV-3Z-HqS" id="eNu-nB-8K7">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eKX-Kj-rWz">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K0r-hB-c97">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DatePickerCell" rowHeight="216" id="c8J-JG-rHJ" customClass="DatePickerCell" customModule="ExtendingTableViewCell_Swift" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="c8J-JG-rHJ" id="Hjy-gt-I1O">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="Jkb-YA-iQ7">
+                                            <rect key="frame" x="0.0" y="27" width="480" height="162"/>
+                                            <date key="date" timeIntervalSinceReferenceDate="426529117.79416102">
+                                                <!--2014-07-08 16:18:37 +0000-->
+                                            </date>
+                                        </datePicker>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="Jkb-YA-iQ7" firstAttribute="leading" secondItem="Hjy-gt-I1O" secondAttribute="leading" id="1BA-70-ibD"/>
+                                        <constraint firstAttribute="centerX" secondItem="Jkb-YA-iQ7" secondAttribute="centerX" id="Ifs-FC-hio"/>
+                                        <constraint firstAttribute="trailing" secondItem="Jkb-YA-iQ7" secondAttribute="trailing" id="a0t-Em-kGb"/>
+                                        <constraint firstAttribute="centerY" secondItem="Jkb-YA-iQ7" secondAttribute="centerY" id="pro-7o-zFV"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Ifs-FC-hio"/>
+                                            <exclude reference="pro-7o-zFV"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="Ifs-FC-hio"/>
+                                            <include reference="pro-7o-zFV"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="datePicker" destination="Jkb-YA-iQ7" id="8Ix-0D-FE6"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="PickerViewCell" rowHeight="216" id="DAI-85-OgQ" customClass="PickerViewCell" customModule="ExtendingTableViewCell_Swift" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DAI-85-OgQ" id="Puf-6V-7ab">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <pickerView contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TjQ-0V-eER">
+                                            <rect key="frame" x="0.0" y="27" width="480" height="162"/>
+                                        </pickerView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="TjQ-0V-eER" secondAttribute="trailing" id="7vp-Im-rdX"/>
+                                        <constraint firstAttribute="centerX" secondItem="TjQ-0V-eER" secondAttribute="centerX" id="T3P-em-oOG"/>
+                                        <constraint firstAttribute="centerY" secondItem="TjQ-0V-eER" secondAttribute="centerY" id="gwu-tU-0WL"/>
+                                        <constraint firstItem="TjQ-0V-eER" firstAttribute="leading" secondItem="Puf-6V-7ab" secondAttribute="leading" id="wps-VU-8I9"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="T3P-em-oOG"/>
+                                            <exclude reference="gwu-tU-0WL"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="constraints">
+                                            <include reference="T3P-em-oOG"/>
+                                            <include reference="gwu-tU-0WL"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pickerView" destination="TjQ-0V-eER" id="mSQ-OD-EbC"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <variation key="heightClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="640"/>
+                        </variation>
+                        <variation key="widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="640"/>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=regular" ambiguous="YES">
+                            <rect key="frame" x="0.0" y="0.0" width="640" height="640"/>
+                        </variation>
+                        <connections>
+                            <outlet property="dataSource" destination="OWm-ip-n8b" id="pOr-AA-1Yg"/>
+                            <outlet property="delegate" destination="OWm-ip-n8b" id="vGN-Yw-lOF"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Extending Cell" id="qyh-5n-c8m"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uR7-tn-t60" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176" y="-202"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="UEp-IU-Ujq">
+            <objects>
+                <navigationController id="wgS-KC-laf" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LHx-tk-mJ6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OWm-ip-n8b" kind="relationship" relationship="rootViewController" id="Ziu-Ya-vti"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6jb-Hb-xkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-524" y="-202"/>
+        </scene>
+    </scenes>
+</document>
