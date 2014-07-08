@@ -12,7 +12,7 @@ import UIKit
 
 class RootViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
-    var tableDatas :[Dictionary<String, AnyObject>] = Array()
+    var tableDatas :[Dictionary<String, AnyObject>]?
     var dateFormatter :NSDateFormatter?
     var selectedIndexPath :NSIndexPath?
     
@@ -53,7 +53,8 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
     override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete method implementation.
         // Return the number of rows in the section.
-        var numberOfRows = tableDatas.count
+        var numberOfRows = tableDatas!.count
+
         if hasInlineTableViewCell() {
             numberOfRows += 1
         }
@@ -69,7 +70,7 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
         }
         
         // Configure the cell...
-        var rowData = tableDatas[dataRow]
+        var rowData = tableDatas![dataRow]
         let title = rowData["title"]! as String
         let type = rowData["type"]! as String
         if selectedIndexPath && selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row == indexPath.row - 1 {
@@ -148,11 +149,11 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
     override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
         
         var dataRow = indexPath.row
-        if selectedIndexPath && selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row == indexPath.row - 1 {
+        if selectedIndexPath && selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row < indexPath.row {
             dataRow -= 1
         }
         
-        var rowData = tableDatas[dataRow]
+        var rowData = tableDatas![dataRow]
         var type = rowData["type"]! as String
         if type != "normal" {
             displayOrHideInlinePickerViewForIndexPath(indexPath);
@@ -169,14 +170,14 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
             selectedIndexPath = indexPath
             tableView.insertRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)], withRowAnimation: .Fade)
             
-        } else if selectedIndexPath == indexPath {
+        } else if selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row == indexPath.row {
             
             tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)], withRowAnimation: .Fade)
             selectedIndexPath = nil
             
         } else if selectedIndexPath!.section != indexPath.section || selectedIndexPath!.row != indexPath.row {
             
-            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: selectedIndexPath!.row, inSection: selectedIndexPath!.section)], withRowAnimation: .Fade)
+            tableView.deleteRowsAtIndexPaths([NSIndexPath(forRow: selectedIndexPath!.row + 1, inSection: selectedIndexPath!.section)], withRowAnimation: .Fade)
             
             // After the deletion operation the then indexPath of original table view changed to the resulting table view
             if (selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row < indexPath.row) {
@@ -218,18 +219,27 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
     func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
         
         var index = selectedIndexPath!.row
-        var rowData = tableDatas[index]
+        var rowData = tableDatas![index]
         rowData["value"] = (row == 0) ? "Male" : "Female";
-        tableDatas[index] = rowData
+        
+        if var tmpArray = tableDatas {
+            tmpArray[index] = rowData
+            tableDatas = tmpArray
+        }
+
         
         tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: .Fade)
     }
     
     func handleDatePickerValueChanged(datePicker: UIDatePicker!) {
         var index = selectedIndexPath!.row
-        var rowData = tableDatas[index]
+        var rowData = tableDatas![index]
         rowData["value"] = datePicker.date
-        tableDatas[index] = rowData
+        
+        if var tmpArray = tableDatas {
+            tmpArray[index] = rowData
+            tableDatas = tmpArray
+        }
         
         tableView.reloadRowsAtIndexPaths([selectedIndexPath!], withRowAnimation: .Fade)
 
