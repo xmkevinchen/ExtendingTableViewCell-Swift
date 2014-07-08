@@ -65,7 +65,7 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
         
         var dataRow = indexPath.row
         
-        if selectedIndexPath && selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row == indexPath.row - 1 {
+        if selectedIndexPath && selectedIndexPath!.section == indexPath.section && selectedIndexPath!.row < indexPath.row {
             dataRow -= 1;
         }
         
@@ -160,6 +160,8 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
         }
         
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
+        
+        tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
     }
     
     func displayOrHideInlinePickerViewForIndexPath(indexPath: NSIndexPath!) {
@@ -191,6 +193,8 @@ class RootViewController: UITableViewController, UIPickerViewDataSource, UIPicke
                 selectedIndexPath = indexPath
             }
         }
+        
+        
         
         tableView.endUpdates()
     }
