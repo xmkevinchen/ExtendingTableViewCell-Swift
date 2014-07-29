@@ -10,7 +10,7 @@ import UIKit
 
 class PickerViewCell: UITableViewCell {
 
-    @IBOutlet var pickerView: UIPickerView
+    @IBOutlet var pickerView: UIPickerView!
     
     init(style: UITableViewCellStyle, reuseIdentifier: String) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
